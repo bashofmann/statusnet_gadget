@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+    <ModulePrefs title="status.net Gadget">
+        <Require feature="opensocial-0.9" />
+        <Require feature="views" />
+        <Require feature="opensocial-data" />
+        <Require feature="opensocial-templates">
+        </Require>
+        <Require feature="osapi" />
+    </ModulePrefs>
+    <Content type="html" view="canvas">
+        <![CDATA[
+            Hello World
+       ]]>
+    </Content>
+    <Content type="html" view="profile">
+    </Content>
+</Module>
