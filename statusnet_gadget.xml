@@ -17,7 +17,7 @@
         </OAuth>
         <AllowedDomain name="status.net.xyz" />
     </ModulePrefs>
-    <Content type="html" view="canvas" href="proxiedContent.php" authz="signed">
+    <Content type="html" view="canvas,mobilecanvas" href="proxiedContent.php" authz="signed">
         <script xmlns:os="http://ns.opensocial.org/2008/markup" type="text/os-data">
             <os:PeopleRequest key="Viewer" userId="@viewer" fields="name" groupId="@self"/>
         </script>
