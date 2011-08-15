@@ -42,6 +42,7 @@ $data = json_decode(file_get_contents('php://input'), true);
     <ul>
         <li repeat="${feed}">
             ${Cur.text} (${Cur.created_at}, ${Cur.user.name})
+            <a class="link_post_to_wall" href="javascript:;" id="${Cur.id}">post</a>
         </li>
     </ul>
 </script>
@@ -69,6 +70,7 @@ $data = json_decode(file_get_contents('php://input'), true);
                 } else {
                     console.log(response);
                     opensocial.data.DataContext.putDataSet('feed', response.data);
+                    bindLinks();
                 }
             }, params);
         }
@@ -76,7 +78,18 @@ $data = json_decode(file_get_contents('php://input'), true);
         fetchData();
     }
     
+    function bindLinks() {
+        $('a.link_post_to_wall').unbind('click').click(function() {
+            vz.embed.getEmbedUrl({postId: $(this).attr('id')}, function(embedUrl) {
+                var params = [];
+                params[opensocial.Message.Field.TYPE] = opensocial.Message.Type.PUBLIC_MESSAGE;
+                var message = opensocial.newMessage('Have a look at this update: ' + embedUrl, params);
+                var recipient = "VIEWER";
+                opensocial.requestSendMessage(recipient, message);
+            });
+        });
+    }
     gadgets.util.registerOnLoadHandler(function() {
-        loadFeed();
+        loadFeed();       
     });
 </script>

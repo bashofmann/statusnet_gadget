@@ -1,0 +1,19 @@
+<p id="post"></p>
+<a href="javascript:;" id="app_link">go to app</a>
+<script type="text/javascript">
+    gadgets.util.registerOnLoadHandler(function() {
+        var postId = gadgets.views.getParams()['postId'];
+        console.log(postId);
+        osapi.http.get({
+            'href' : 'http://status.net.xyz:8061/index.php/api/statuses/show/' + encodeURIComponent(postId) + '.json',
+            'format' : 'json',
+            'authtz' : 'signed'
+        }).execute(function(response) {
+            console.log(response);
+            $('#post').html(response.content.text);
+        });
+        $('#game_link').click(function() {
+            gadgets.view.requestNavigateTo('canvas');
+        });
+    });
+</script>

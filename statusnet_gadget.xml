@@ -8,6 +8,8 @@
         </Require>
         <Require feature="osapi" />
         <Require feature="oauthpopup" />
+        <Require feature="org.jquery.core-1.4.2" />
+        <Require feature="embed" />
         <OAuth>
           <Service name="statusnet">
             <Request url="http://status.net.xyz:8061/index.php/api/oauth/request_token" param_location="uri-query" />
@@ -23,5 +25,7 @@
         </script>
     </Content>
     <Content type="html" view="profile">
+    </Content>
+    <Content type="html" view="embed" href="embed.html">
     </Content>
 </Module>
