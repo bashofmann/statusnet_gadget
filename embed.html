@@ -1,4 +1,8 @@
-<p id="post"></p>
+<script type="text/os-template" xmlns:statusnet="http://statusnet.net.xyz" xmlns:os="http://ns.opensocial.org/2008/markup" require="feedItem" autoUpdate="true">
+    <p>
+        <statusnet:feedItem showPostLink="false" item="${feedItem}"/>
+    </p>
+</script>
 <a href="javascript:;" id="app_link">go to app</a>
 <script type="text/javascript">
     gadgets.util.registerOnLoadHandler(function() {
@@ -10,7 +14,7 @@
             'authtz' : 'signed'
         }).execute(function(response) {
             console.log(response);
-            $('#post').html(response.content.text);
+            opensocial.data.DataContext.putDataSet('feedItem', response.content);
         });
         $('#game_link').click(function() {
             gadgets.view.requestNavigateTo('canvas');

@@ -38,11 +38,10 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 <p>Hello <?= $data[0]['result']['displayName'] ?> from Proxied Content.</p>
 
-<script type="text/os-template" xmlns:os="http://ns.opensocial.org/2008/markup" require="feed" autoUpdate="true">
+<script type="text/os-template" xmlns:statusnet="http://statusnet.net.xyz" xmlns:os="http://ns.opensocial.org/2008/markup" require="feed" autoUpdate="true">
     <ul>
         <li repeat="${feed}">
-            ${Cur.text} (${Cur.created_at}, ${Cur.user.name})
-            <a class="link_post_to_wall" href="javascript:;" id="${Cur.id}">post</a>
+            <statusnet:feedItem showPostLink="true" item="${Cur}"/>
         </li>
     </ul>
 </script>

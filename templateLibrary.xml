@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Templates xmlns:statusnet="http://statusnet.net.xyz" xmlns:os="http://ns.opensocial.org/2008/markup">
+    <Namespace prefix="statusnet" url="http://statusnet.net.xyz" />
+
+    <Template tag="statusnet:feedItem">
+        ${item.text} (${item.created_at}, ${item.user.name})
+        <a if="${showPostLink}" class="link_post_to_wall" href="javascript:;" id="${item.id}">post</a>
+    </Template>
+</Templates>
